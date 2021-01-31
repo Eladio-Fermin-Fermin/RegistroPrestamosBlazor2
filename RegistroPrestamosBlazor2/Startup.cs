@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RegistroPrestamosBlazor2.BLL;
 using RegistroPrestamosBlazor2.DAL;
 using RegistroPrestamosBlazor2.Data;
 using System;
@@ -36,6 +37,8 @@ namespace RegistroPrestamosBlazor2
             services.AddDbContext<Contexto>(options =>
             options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
             );
+            services.AddTransient<PersonasBLL>();
+            services.AddTransient<PrestamosBLL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
