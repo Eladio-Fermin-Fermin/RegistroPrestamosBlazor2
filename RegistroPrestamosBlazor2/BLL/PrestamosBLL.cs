@@ -160,9 +160,5 @@ namespace RegistroPrestamosBlazor2.BLL
 
             return lista;
         }
-
-        //Operaciones.
-
-
     }
 }

@@ -17,7 +17,7 @@
                             <div class="form-group">
                                 <label>Persona Id</label>
                                 <div class="input-group">
-                                    <InputNumber @bind-Value="personas.PersonaId" class="form-control" />
+                                    <InputNumber @bind-Value="this.PersonaId" class="form-control" />
                                     <div class="input-group-append">
                                         <button type="button" style="z-index:0" class="btn btn-secondary input-group-text" @onclick="Buscar">Buscar</button>
                                     </div>
@@ -94,7 +94,7 @@
         }
         else
         {
-            toast.ShowInfo("No se encontró el registro.");
+            toast.ShowInfo("Registro no encontrado.");
         }
     }
     public void Nuevo()

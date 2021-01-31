@@ -65,6 +65,9 @@
                     <button type="button" class="btn btn-danger" @onclick="Eliminar">Eliminar</button>
                 </div>
             </div>
+            <div>
+                <p>Version 1.0</p>
+            </div>
         </div>
     </EditForm>
 </div>
@@ -72,10 +75,6 @@
 @code{
     [Parameter]
     public int PrestamoId { get; set; }
-
-    [Inject]
-    private PersonasBLL personasBLL { get; set; }
-    private PrestamosBLL prestamosBLL { get; set; }
 
     Prestamos Prestamo = new Prestamos();
     List<Personas> personas = new List<Personas>();
@@ -107,7 +106,6 @@
 
     public async void Guardar()
     {
-       
         if (await PrestamosBLL.Guardar(Prestamo))
         {
             toast.ShowSuccess("Guardado");
