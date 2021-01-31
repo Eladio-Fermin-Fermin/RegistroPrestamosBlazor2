@@ -163,7 +163,7 @@ namespace RegistroPrestamosBlazor2.BLL
 
         //Operaciones.
 
-        public async void SumarBalancePersonas(Prestamos prestamos)
+       /* public async void SumarBalancePersonas(Prestamos prestamos)
         {
             Personas personas = new Contexto.Personas(prestamos.PersonaId);
             personas.Balance + prestamos.Monto;
@@ -179,6 +179,6 @@ namespace RegistroPrestamosBlazor2.BLL
         {
             SumarBalancePersonas(prestamos);
             RestarBalancePersonas(prestamos);
-        }
+        }*/
     }
 }
