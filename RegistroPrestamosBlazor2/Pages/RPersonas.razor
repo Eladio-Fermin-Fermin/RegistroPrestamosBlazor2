@@ -1,8 +1,7 @@
 ﻿@page "/personas"
 @page "/Personas/{PersonaId:int}"
-@inject IToastService toast
 
-<h3>RPersonas</h3>
+@inject IToastService toast
 
 <div class="shadow p-3 mb-5 bg-white rounded">
     <EditForm Model="personas" OnValidSubmit="Guardar">
@@ -13,7 +12,6 @@
             </div>
             <div class="card-body">
                 <form>
-
                     <div class="form-row align-items-center">
                         <div class="col">
                             <div class="form-group">
@@ -27,37 +25,35 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label>Nombres</label>
                         <InputText @bind-Value="personas.Nombres" class="form-control" />
                         <ValidationMessage For="@(() => personas.Nombres)" />
                     </div>
-
                     <div class="form-group">
                         <label>Teléfono</label>
                         <InputText @bind-Value="personas.Telefono" class="form-control" />
                         <ValidationMessage For="@(() => personas.Telefono)" />
                     </div>
-
                     <div class="form-group">
                         <label>Cédula</label>
                         <InputText @bind-Value="personas.Cedula" class="form-control" />
                         <ValidationMessage For="(() => personas.Cedula)" />
                     </div>
-
                     <div class="form-group">
                         <label>Dirección</label>
                         <InputText @bind-Value="personas.Direccion" class="form-control" />
                         <ValidationMessage For="(() => personas.Direccion)" />
                     </div>
-
                     <div class="form-group">
                         <label>Fecha Nacimiento</label>
                         <InputDate @bind-Value="personas.FechaNacimiento" class="form-control" />
                         <ValidationMessage For="(() => personas.FechaNacimiento)" />
                     </div>
-
+                    <div class="form-group">
+                        <label>Balance</label>
+                        <InputNumber @bind-Value="personas.Balance" class="form-control" readonly />
+                    </div>
                 </form>
             </div>
             <div class="card-footer">

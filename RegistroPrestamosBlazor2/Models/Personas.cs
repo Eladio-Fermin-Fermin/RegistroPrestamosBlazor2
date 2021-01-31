@@ -19,7 +19,7 @@ namespace RegistroPrestamosBlazor2.Models
         [Required(ErrorMessage = "Es obligatorio introducir una dirección.")]
         public string Direccion { get; set; }
         [Required(ErrorMessage = "Es obligatorio introducir una fecha de nacimiento")]
-        public DateTime FechaNacimiento { get; set; }
+        public DateTime FechaNacimiento { get; set; } = DateTime.Now;
         public float Balance { get; internal set; }
     }
 }
