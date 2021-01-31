@@ -20,5 +20,6 @@ namespace RegistroPrestamosBlazor2.Models
         public string Direccion { get; set; }
         [Required(ErrorMessage = "Es obligatorio introducir una fecha de nacimiento")]
         public DateTime FechaNacimiento { get; set; }
+        public float Balance { get; internal set; }
     }
 }
