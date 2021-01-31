@@ -160,5 +160,25 @@ namespace RegistroPrestamosBlazor2.BLL
 
             return lista;
         }
+
+        //Operaciones.
+
+        public async void SumarBalancePersonas(Prestamos prestamos)
+        {
+            Personas personas = new Contexto.Personas(prestamos.PersonaId);
+            personas.Balance + prestamos.Monto;
+        }
+
+        public async void RestarBalancePersonas(Prestamos prestamos)
+        {
+            Personas personas = new Contexto.Personas(prestamos.PersonaId);
+            personas.Balance -= prestamos.Monto;
+        }
+
+        private void ModificarBalancePersonas()
+        {
+            SumarBalancePersonas(prestamos);
+            RestarBalancePersonas(prestamos);
+        }
     }
 }
