@@ -6,7 +6,7 @@
 @inject PrestamosBLL PrestamosBLL
 
 <h3></h3>
-<div class="shadow p-3 mb-5 bg-white rounded">
+<div class="shadow-none p-3 mb-5 bg-light rounded">
     <EditForm Model="Prestamo" OnValidSubmit="Guardar">
         <DataAnnotationsValidator />
         <div class="card">
@@ -33,7 +33,7 @@
                         <InputSelect @bind-Value="Prestamo.PersonaId" class="form-control">
                             @foreach (var item in @personas)
                             {
-                                <option value="@item.PersonaId">@item.Nombres</option>
+                                <option value="@item.Nombres">@item.PersonaId</option>
                             }
                         </InputSelect>
                         <ValidationMessage For="(() => Prestamo.PersonaId)" />
@@ -56,10 +56,8 @@
                         <label>Balance</label>
                         <InputNumber @bind-Value="Prestamo.Balance" class="form-control" readonly />
                     </div>
-
                 </form>
             </div>
-
             <div class="card-footer">
                 <div class="form-group text-center">
                     <button type="button" class="btn btn-primary" @onclick="Nuevo">Nuevo</button>
