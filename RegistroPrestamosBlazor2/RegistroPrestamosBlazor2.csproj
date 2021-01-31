@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+	<StartWorkinkDirectory>$(MSBuildProjectDirectory)</StartWorkinkDirectory>
   </PropertyGroup>
 
   <ItemGroup>
