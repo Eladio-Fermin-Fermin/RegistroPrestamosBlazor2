@@ -9,7 +9,7 @@ using RegistroPrestamosBlazor2.DAL;
 namespace RegistroPrestamosBlazor2.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20210131170106_migracion_Inicial")]
+    [Migration("20210131182730_migracion_Inicial")]
     partial class migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,9 @@ namespace RegistroPrestamosBlazor2.Migrations
                     b.Property<int>("PersonaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<float>("Balance")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("Cedula")
                         .IsRequired()
@@ -46,6 +49,45 @@ namespace RegistroPrestamosBlazor2.Migrations
                     b.HasKey("PersonaId");
 
                     b.ToTable("Personas");
+                });
+
+            modelBuilder.Entity("RegistroPrestamosBlazor2.Models.Prestamos", b =>
+                {
+                    b.Property<int>("PrestamoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<float>("Balance")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("Concepto")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("Monto")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("PersonaId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("PrestamoId");
+
+                    b.HasIndex("PersonaId");
+
+                    b.ToTable("Prestamos");
+                });
+
+            modelBuilder.Entity("RegistroPrestamosBlazor2.Models.Prestamos", b =>
+                {
+                    b.HasOne("RegistroPrestamosBlazor2.Models.Personas", "Persona")
+                        .WithMany()
+                        .HasForeignKey("PersonaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Persona");
                 });
 #pragma warning restore 612, 618
         }
