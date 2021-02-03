@@ -37,6 +37,7 @@ namespace RegistroPrestamosBlazor2
             services.AddDbContext<Contexto>(options =>
             options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
             );
+            //Se Inyectaron las BLLs.
             services.AddTransient<PersonasBLL>();
             services.AddTransient<PrestamosBLL>();
         }
