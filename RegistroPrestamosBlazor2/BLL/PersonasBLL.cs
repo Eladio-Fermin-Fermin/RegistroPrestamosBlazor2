@@ -33,13 +33,13 @@ namespace RegistroPrestamosBlazor2.BLL
             return paso;
         }
 
-        /*public async Task<bool> Guardar(Personas persona)
+        public async Task<bool> Guardar(Personas persona)
         {
             if (!await Existe(persona.PersonaId))
                 return await Insertar(persona);
             else
                 return await Modificar(persona);
-        }*/
+        }
 
         private async Task<bool> Insertar(Personas persona)
         {
@@ -81,7 +81,7 @@ namespace RegistroPrestamosBlazor2.BLL
 
             try
             {
-                //persona = await contexto.Personas.FindAsync(id);
+                persona = await contexto.Personas.FindAsync(id);
             }
             catch (Exception)
             {
