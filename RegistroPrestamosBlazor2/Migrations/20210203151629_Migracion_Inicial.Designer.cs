@@ -9,8 +9,8 @@ using RegistroPrestamosBlazor2.DAL;
 namespace RegistroPrestamosBlazor2.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20210131182730_migracion_Inicial")]
-    partial class migracion_Inicial
+    [Migration("20210203151629_Migracion_Inicial")]
+    partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

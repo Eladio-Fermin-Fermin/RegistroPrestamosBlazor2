@@ -11,41 +11,44 @@ namespace RegistroPrestamosBlazor2.BLL
 {
     public class PersonasBLL
     {
-        private Contexto contexto { get; set; }
+        private Contexto contexto;
         public PersonasBLL(Contexto contexto)
         {
             this.contexto = contexto;
         }
-        public async Task<bool> Guardar(Personas persona)
+
+        public async Task<bool> Existe(int id)
+        {
+            bool paso = false;
+            try
+            {
+                paso = await contexto.Personas.AnyAsync(p => p.PersonaId == id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return paso;
+        }
+
+        /*public async Task<bool> Guardar(Personas persona)
         {
             if (!await Existe(persona.PersonaId))
                 return await Insertar(persona);
             else
                 return await Modificar(persona);
-        }
-        public async Task<bool> Existe(int id)
-        {
-            bool ok = false;
-            try
-            {
-                ok = await contexto.Personas.AnyAsync(p => p.PersonaId == id);
-            }
-            catch (Exception)
-            {
+        }*/
 
-                throw;
-            }
-
-            return ok;
-        }
         private async Task<bool> Insertar(Personas persona)
         {
-            bool ok = false;
+            bool paso = false;
 
             try
             {
                 await contexto.Personas.AddAsync(persona);
-                ok = await contexto.SaveChangesAsync() > 0;
+                paso = await contexto.SaveChangesAsync() > 0;
             }
             catch (Exception)
             {
@@ -53,16 +56,16 @@ namespace RegistroPrestamosBlazor2.BLL
                 throw;
             }
 
-            return ok;
+            return paso;
         }
         private async Task<bool> Modificar(Personas persona)
         {
-            bool ok = false;
+            bool paso = false;
 
             try
             {
                 contexto.Entry(persona).State = EntityState.Modified;
-                ok = await contexto.SaveChangesAsync() > 0;
+                paso = await contexto.SaveChangesAsync() > 0;
             }
             catch (Exception)
             {
@@ -70,7 +73,7 @@ namespace RegistroPrestamosBlazor2.BLL
                 throw;
             }
 
-            return ok;
+            return paso;
         }
         public async Task<Personas> Buscar(int id)
         {
@@ -78,7 +81,7 @@ namespace RegistroPrestamosBlazor2.BLL
 
             try
             {
-                persona = await contexto.Personas.FindAsync(id);
+                //persona = await contexto.Personas.FindAsync(id);
             }
             catch (Exception)
             {
@@ -90,15 +93,15 @@ namespace RegistroPrestamosBlazor2.BLL
         }
         public async Task<bool> Eliminar(int id)
         {
-            bool ok = false;
+            bool borrar = false;
 
             try
             {
-                var registro = await contexto.Personas.FindAsync(id);
-                if (registro != null)
+                var registros = await contexto.Personas.FindAsync(id);
+                if (registros != null)
                 {
-                    contexto.Personas.Remove(registro);
-                    ok = await contexto.SaveChangesAsync() > 0;
+                    contexto.Personas.Remove(registros);
+                    borrar = await contexto.SaveChangesAsync() > 0;
                 }
             }
             catch (Exception)
@@ -107,7 +110,7 @@ namespace RegistroPrestamosBlazor2.BLL
                 throw;
             }
 
-            return ok;
+            return borrar;
         }
         public async Task<List<Personas>> GetPersonas()
         {
